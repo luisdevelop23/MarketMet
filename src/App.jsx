@@ -12,6 +12,11 @@ function App() {
       {/* rutas */}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/:page" element={<HomePage />} />
+        {/* <Route path="/myList" element={} /> */}
+        {/* <Route path="/basket" element={} /> */}
+        {/* <Route path="/payment" element={} /> */}
+
       </Routes>
     </>
   );
