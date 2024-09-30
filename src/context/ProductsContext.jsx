@@ -31,7 +31,6 @@ export const ProductsProvider = ({ children }) => {
     // console.log(vpage)
     setLoadingProducts(true);
     const { data, error, count } = await getProducts(vproducts, vpage);
-    console.log("elements count", count);
     setTotalPages(Math.ceil(count / 16));
     setProducts(data);
     setLoadingProducts(false);

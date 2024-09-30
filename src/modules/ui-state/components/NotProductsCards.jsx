@@ -1,4 +1,3 @@
-import React from "react";
 import NotProducts from "../../../assets/img/catSad.png";
 const NotProductsCards = () => {
   return (

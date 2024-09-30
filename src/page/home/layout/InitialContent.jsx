@@ -6,9 +6,13 @@ import CardProduct from "../../../modules/card/components/CardProduct";
 import ContainerCards from "../../../modules/card/components/ContainerCards";
 import Pagination from "../../../modules/core/components/Pagination";
 import NotProductsCards from "../../../modules/ui-state/components/NotProductsCards";
-import LoadingCards from "../../../modules/ui-state/components/loadingCards";
+import LoadingCards from "../../../modules/ui-state/components/LoadingCards";
+import { useParams } from "react-router-dom";
 
 const InitialContent = () => {
+  const { product } = useParams();
+  // console.log('tu url', product)
+
   const { products, loadingProducts } = useContext(ProductContext);
   return (
     <>

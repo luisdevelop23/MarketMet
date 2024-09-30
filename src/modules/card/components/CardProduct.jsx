@@ -1,4 +1,3 @@
-import React from "react";
 import formatTextLength from "../utils/Utils";
 
 const CardProduct = ({ product }) => {

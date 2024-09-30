@@ -1,11 +1,11 @@
 import supabase from "./supabase";
 
-export async function getProducts(product, page = 1) {
-  console.log(product);
+export async function getProducts(product, page = 1,amount=16) {
+  let amountProducts = amount -1;
   // ? pagination management
   const PR = {
-    start: (page - 1) * 15,
-    end: (page - 1) * 15 + 15,
+    start: (page - 1) * amountProducts,
+    end: (page - 1) * amountProducts + amountProducts,
   };
   // ? product contains a value
   if (product) {
@@ -58,7 +58,7 @@ export async function paginationProductsDefault(start, end) {
 }
 
 async function countProducts(product) {
-  console.log("count filter util", product);
+  // console.log("count filter util", product);
   if (product) {
     const { count, error } = await supabase
       .from("products")

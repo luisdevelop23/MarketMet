@@ -1,7 +1,12 @@
-import React from "react";
 
-const LoadingCards = () => {
-  const TOTALLOADING = Array.from({ length: 8 });
+const LoadingCards = ({amount}) => {
+  // console.log("cantidad de cards:", amount)
+  let TOTALLOADING;
+  if (amount === 0 || amount === undefined) {
+    TOTALLOADING = Array.from({ length: 8 });
+  }else{
+    TOTALLOADING = Array.from({ length: amount });
+  };
   return (
     <>
       {TOTALLOADING.map((_, index) => (
