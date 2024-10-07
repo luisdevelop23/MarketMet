@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { paginationFilterProducts } from "../../../services/paginationProducts";
+import { paginationFilterProducts } from "../../../services/FecthProducts";
 import CardProduct from "./CardProduct";
 import LoadingCards from "../../ui-state/components/LoadingCards";
 
@@ -31,8 +31,8 @@ const ContainerCarousel = ({ productSearched, title }) => {
 
   return (
     <div className="flex w-full flex-col items-center pt-8">
-      <div className="flex w-11/12 pb-3">
-        <h2 className="nnf-semi-bold bg-gray-300 px-10 py-3 text-center text-3xl uppercase rounded-t-3xl">
+      <div className="flex w-11/12 rounded-3 pb-2">
+        <h2 className="nnf-semi-bold bg-gray-200 px-3 py-2 text-center text-lg uppercase rounded-t-xl">
           {title}
         </h2>
       </div>

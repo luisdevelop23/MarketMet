@@ -13,7 +13,7 @@ const Pagination = () => {
             onClick={(e) => paginationProducts(false)}
             className="flex items-center rounded-xl border-2 border-black px-7 py-2 text-xl font-bold"
           >
-            <span class="icon-[ls--left]"></span>
+            <span className="icon-[ls--left]"></span>
             <span>Anterior</span>
           </button>
         </div>
@@ -27,7 +27,7 @@ const Pagination = () => {
             className="flex items-center rounded-xl border-2 border-black px-7 py-2 text-xl font-bold"
           >
             <span>Siguiente</span>
-            <span class="icon-[ls--right]"></span>
+            <span className="icon-[ls--right]"></span>
           </button>
         </div>
       </div>

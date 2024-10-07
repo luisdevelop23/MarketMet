@@ -1,12 +1,13 @@
 import supabase from "./supabase";
 
-export async function getProducts(product, page = 1,amount=16) {
-  let amountProducts = amount -1;
+export async function getProducts(product, page = 1, amount = 16) {
+  let amountProducts = amount - 1;
   // ? pagination management
   const PR = {
     start: (page - 1) * amountProducts,
     end: (page - 1) * amountProducts + amountProducts,
   };
+  console.log(PR);
   // ? product contains a value
   if (product) {
     const { count } = await countProducts(product);
@@ -71,4 +72,14 @@ async function countProducts(product) {
     .from("products")
     .select("*", { count: "exact", head: true });
   return { count, error };
+}
+
+export async function getProductByAsin(asin) {
+  const { data, error } = await supabase
+    .from("products")
+    .select(
+      "product_title,product_price,product_original_price,product_minimum_offer_price,product_photo,asin,product_url,product_star_rating,sales_volume,product_star_rating",
+    )
+    .eq("asin", asin);
+  return { data, error };
 }

@@ -1,18 +1,14 @@
-import React, { useContext, useState } from "react";
-import { ProductContext } from "../../../context/ProductsContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const SearchProducts = () => {
-  const { paginationFilterProducts, Product: ListProducts } = useContext(ProductContext);
   const [Product, setProduct] = useState("");
   const navigate = useNavigate(); // Hook para navegar programáticamente
 
   const searchProducts = (e) => {
     e.preventDefault(); // Previene el comportamiento por defecto del formulario
-    console.log(Product);
-    paginationFilterProducts(Product); // Llama a la función para filtrar productos
-    navigate(`/Product/${Product}`); // Redirige a la ruta deseada
+    navigate(`/Products/${Product}`); // Redirige a la ruta deseada
     console.log('click navigate');
   };
 

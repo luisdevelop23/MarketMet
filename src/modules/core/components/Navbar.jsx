@@ -3,7 +3,7 @@ import SearchProducts from "../hook/SearchProducts";
 
 const Navbar = () => {
   return (
-    <div className="flex h-16 justify-center bg-slate-200">
+    <div className="flex h-16 justify-center bg-slate-200 fixed top-0 w-full z-20">
       <div className="flex w-10/12 bg-slate-200">
         <Link to="/" className="nnf-semi-bold flex w-4/12 items-center justify-center text-[30px]">
           MARKET

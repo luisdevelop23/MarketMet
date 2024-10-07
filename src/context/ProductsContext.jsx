@@ -1,8 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  getProductByAsin,
   getProducts,
   paginationProductsDefault,
-} from "../services/paginationProducts";
+} from "../services/FecthProducts";
 
 export const ProductContext = createContext([]);
 
@@ -14,6 +15,8 @@ export const ProductsProvider = ({ children }) => {
   const [productsDefault, setProductsDefault] = useState(
     paginationProductsDefault(0, 16),
   );
+  const [detailProduct, setDetailProduct] = useState([])
+  
   const [products, setProducts] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
@@ -26,6 +29,13 @@ export const ProductsProvider = ({ children }) => {
   const [loadingFavorites, setLoadingFavorites] = useState(false);
   const [loadingAddFav, setLoadingAddFav] = useState(false);
   const [loadingRemoveFav, setLoadingRemoveFav] = useState(false);
+
+// const fetchProduct = async (id) => {
+//   const { data, error } = await getProductByAsin(id);
+//   setDetailProduct(data[0]);
+//   console.log("Producto detalle obtenido:", data[0]);
+// };
+
 
   const fetchProducts = async (vproducts, vpage) => {
     // console.log(vpage)
@@ -60,9 +70,9 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts(value, 1);
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
 
   return (
     <ProductContext.Provider

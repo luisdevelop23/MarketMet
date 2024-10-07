@@ -8,15 +8,14 @@ import Footer from "../../modules/core/components/Footer";
 const HomePage = () => {
   return (
     <>
-      <div>
-        <div className="flex items-center justify-center">
+      <div className="flex flex-col bg-red-00 w-9/12 mx-auto  mt-16">
+        <div className="flex items-center justify-center mt-6">
           <Carousel />
         </div>
         <ContainerCarousel productSearched="Iphone" title="Iphones"/>
         <ContainerCarousel productSearched="mac" title="macs"/>
         <ContainerCarousel productSearched="asus" title="asus"/>
         <ContainerCarousel productSearched="samsung" title="samsung"/>
-        <Footer />
       </div>
       {/* <InitialContent /> */}
     </>

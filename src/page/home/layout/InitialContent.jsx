@@ -1,22 +1,29 @@
-import React, { useContext } from "react";
-import {
-  ProductContext
-} from "../../../context/ProductsContext";
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { ProductContext } from "../../../context/ProductsContext";
 import CardProduct from "../../../modules/card/components/CardProduct";
 import ContainerCards from "../../../modules/card/components/ContainerCards";
 import Pagination from "../../../modules/core/components/Pagination";
-import NotProductsCards from "../../../modules/ui-state/components/NotProductsCards";
 import LoadingCards from "../../../modules/ui-state/components/LoadingCards";
-import { useParams } from "react-router-dom";
+import NotProductsCards from "../../../modules/ui-state/components/NotProductsCards";
 
 const InitialContent = () => {
   const { product } = useParams();
   // console.log('tu url', product)
 
-  const { products, loadingProducts } = useContext(ProductContext);
+  const { products, loadingProducts, paginationFilterProducts } =
+    useContext(ProductContext);
+
+  useEffect(() => {
+    if (product === undefined) {
+      paginationFilterProducts("");
+    }
+
+    paginationFilterProducts(product);
+  }, [product]);
   return (
     <>
-      <div className="mx-auto flex sm:w-11/12 flex-col py-10 md:w-10/12 lg:w-11/12 xl:w-10/12">
+      <div className="mx-auto flex flex-col  mt-16 sm:w-11/12 lg:w-11/12 xl:w-8/12">
         {loadingProducts ? (
           <ContainerCards>
             <LoadingCards />
@@ -30,7 +37,7 @@ const InitialContent = () => {
         ) : (
           <NotProductsCards />
         )}
-        <Pagination/>
+        {products.length === 0 ? <></> : <Pagination />}
       </div>
     </>
   );
