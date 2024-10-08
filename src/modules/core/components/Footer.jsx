@@ -25,9 +25,9 @@ const Footer = () => {
           <h1 className="nnf-semi-bold text-xl uppercase">Desarrollado por</h1>
           <div className="h-full flex flex-col ">
             <h2 className="text-lg">Luis Saavedra Falcon</h2>
-            <h2 >Linkedin: <a href="">@luissaavedradev</a></h2>
-            <h2 >GitHub: <a href="">@luisdevelop23</a></h2>
-            <h2 >Linkedin: <a href="">@luissaavedradev</a></h2>
+            <h2 >Linkedin: <a href="https://www.linkedin.com/in/luissaavedradev/" target="_blank">@luissaavedradev</a></h2>
+            <h2 >GitHub: <a href="https://github.com/luisdevelop23" target="_blank">@luisdevelop23</a></h2>
+            {/* <h2 >Linkedin: <a href="">@luissaavedradev</a></h2> */}
           </div>
         </div>
         <div className="flex w-3/12 flex-col">
