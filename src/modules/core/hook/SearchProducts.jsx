@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const SearchProducts = () => {
   const [Product, setProduct] = useState("");
   const navigate = useNavigate(); // Hook para navegar programáticamente
@@ -9,7 +8,13 @@ const SearchProducts = () => {
   const searchProducts = (e) => {
     e.preventDefault(); // Previene el comportamiento por defecto del formulario
     navigate(`/Products/${Product}`); // Redirige a la ruta deseada
-    console.log('click navigate');
+    console.log("click navigate");
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      searchProducts(e); // Llama a la función searchProducts cuando se presiona Enter
+    }
   };
 
   return (
@@ -19,6 +24,7 @@ const SearchProducts = () => {
         type="search"
         placeholder="Buscar..."
         onChange={(e) => setProduct(e.target.value)}
+        onKeyDown={handleKeyDown}
         value={Product}
       />
       <button
