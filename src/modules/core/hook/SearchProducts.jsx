@@ -18,7 +18,7 @@ const SearchProducts = () => {
   };
 
   return (
-    <div className="flex w-6/12 items-center justify-center">
+    <div className="flex w-7/12 items-center justify-center">
       <input
         className="w-10/12 rounded-l-xl py-2 pl-4 outline-none"
         type="search"

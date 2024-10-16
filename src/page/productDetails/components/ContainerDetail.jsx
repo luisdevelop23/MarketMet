@@ -25,7 +25,7 @@ const ContainerDetail = ({ detailProduct }) => {
     sales_volume,
   } = detailProduct;
   return (
-    <div className="mt-12 flex items-center justify-center">
+    <div className=" flex items-center justify-center">
       <div className="mt-10 flex w-8/12 rounded-2xl bg-white p-4">
         <div className="flex w-3/6 items-center justify-center">
           <img className="h-[360px] py-4" src={product_photo} alt="" />
@@ -78,7 +78,7 @@ const ContainerDetail = ({ detailProduct }) => {
 
             {/* add to basket */}
             <div className="flex items-center justify-around">
-              <button className="nnf-semi-bold flex items-center rounded-xl bg-blue-1 px-5 py-2 text-white hover:bg-blue-2">
+              <button className="nnf-semi-bold flex items-center rounded-xl bg-blue-1 px-5 py-2 gap-x-2 text-white hover:bg-blue-2">
                 <i className="icon-[mdi--cart-plus] text-[20px]"></i>
                 <span>Add to basket</span>
               </button>

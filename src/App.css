@@ -1,4 +1,6 @@
 :root {
+  --blue-0: #f1f7fe;
+  --blue-c:#e0ecfb;
   --blue-1: #0376e9;
   --blue-2: #0067ce;
   --blue-3: #023e7d;
@@ -8,12 +10,13 @@
   --gray-3: #5c677d;
   --gray-2: #7d8597;
   --gray-1: #979dac;
+  --gray-0: #eeeeee;
 }
 /* background-color: #f6f6f6; */
 
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: #f6f6f6;
+  background-color: var(--gray-0);
 }
 /* styles/fonts.css */
 @font-face {

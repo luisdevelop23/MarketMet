@@ -8,7 +8,7 @@ import Footer from "../../modules/core/components/Footer";
 const HomePage = () => {
   return (
     <>
-      <div className="flex flex-col bg-red-00 w-9/12 mx-auto  mt-16">
+      <div className="flex flex-col bg-red-00 w-9/12 mx-auto ">
         <div className="flex items-center justify-center mt-6">
           <Carousel />
         </div>

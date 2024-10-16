@@ -6,6 +6,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        "blue-0": "var(--blue-0)",
+        "blue-c": "var(--blue-c)",
         "blue-1": "var(--blue-1)",
         "blue-2": "var(--blue-2)",
         "blue-3": "var(--blue-3)",
@@ -15,6 +17,7 @@ export default {
         "gray-3": "var(--gray-3)",
         "gray-2": "var(--gray-2)",
         "gray-1": "var(--gray-1)",
+        "gray-0": "var(--gray-0)",
       },
     },
   },
