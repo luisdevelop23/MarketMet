@@ -1,21 +1,16 @@
-import Navbar from "../../modules/core/components/Navbar";
-import Menu from "../../modules/core/components/Menu";
-import InitialContent from "./layout/InitialContent";
-import Carousel from "./components/Carousel";
 import ContainerCarousel from "../../modules/card/components/ContainerCarousel";
-import Footer from "../../modules/core/components/Footer";
-
+import Carousel from "../../modules/core/components/Carousel";
 const HomePage = () => {
   return (
     <>
-      <div className="flex flex-col bg-red-00 w-9/12 mx-auto ">
-        <div className="flex items-center justify-center mt-6">
+      <div className="bg-red-00 mx-auto flex w-9/12 flex-col">
+        <div className="mt-6 flex items-center justify-center">
           <Carousel />
         </div>
-        <ContainerCarousel productSearched="Iphone" title="Iphones"/>
-        <ContainerCarousel productSearched="mac" title="macs"/>
-        <ContainerCarousel productSearched="asus" title="asus"/>
-        <ContainerCarousel productSearched="samsung" title="samsung"/>
+        <ContainerCarousel productSearched="Iphone" title="Iphones" />
+        <ContainerCarousel productSearched="mac" title="macs" />
+        <ContainerCarousel productSearched="asus" title="asus" />
+        <ContainerCarousel productSearched="samsung" title="samsung" />
       </div>
       {/* <InitialContent /> */}
     </>

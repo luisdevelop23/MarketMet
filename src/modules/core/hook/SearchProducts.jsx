@@ -18,7 +18,7 @@ const SearchProducts = () => {
   };
 
   return (
-    <div className="flex w-7/12 items-center justify-center">
+    <div className=" flex w-5/12 items-center justify-center">
       <input
         className="w-10/12 rounded-l-xl py-2 pl-4 outline-none"
         type="search"
@@ -31,7 +31,7 @@ const SearchProducts = () => {
         onClick={searchProducts}
         className="w-1/12 rounded-r-xl bg-blue-1 py-2 text-white"
       >
-        <i className="icon-[lucide--search] text-[18px]"></i>
+        <span className="icon-[lucide--search] text-[18px]"></span>
       </button>
     </div>
   );

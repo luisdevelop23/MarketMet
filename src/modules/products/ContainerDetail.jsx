@@ -34,7 +34,7 @@ const ContainerDetail = ({ detailProduct }) => {
           <span className="tetx-xl flex w-full items-center justify-end gap-x-6 py-1 pr-9">
             <p>Code:{asin}</p>
             <a hrefLang="es" href={product_url} target="_blank" className="">
-              <i className="icon-[material-symbols--link] h-[20px] w-[20px]"></i>
+              <span className="icon-[material-symbols--link] h-[20px] w-[20px]"></span>
             </a>
           </span>
           <h1 className="nnf-semi-bold text-xl">{product_title}</h1>
@@ -44,7 +44,7 @@ const ContainerDetail = ({ detailProduct }) => {
             <h3>$ {product_price}</h3>
             <h3>
               {product_star_rating}{" "}
-              <i className="icon-[iconamoon--star] text-yellow-400"></i>
+              <span className="icon-[iconamoon--star] text-yellow-400"></span>
             </h3>
           </div>
 
@@ -79,7 +79,7 @@ const ContainerDetail = ({ detailProduct }) => {
             {/* add to basket */}
             <div className="flex items-center justify-around">
               <button className="nnf-semi-bold flex items-center rounded-xl bg-blue-1 px-5 py-2 gap-x-2 text-white hover:bg-blue-2">
-                <i className="icon-[mdi--cart-plus] text-[20px]"></i>
+                <span className="icon-[mdi--cart-plus] text-[20px]"></span>
                 <span>Add to basket</span>
               </button>
             </div>

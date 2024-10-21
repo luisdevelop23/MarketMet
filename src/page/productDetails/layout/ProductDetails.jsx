@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductByAsin } from "../../../services/FecthProducts";
-import ContainerDetail from "../components/ContainerDetail";
+import ContainerDetail from "../../../modules/products/ContainerDetail";
 import ProductDetailsLoader from "../../../modules/ui-state/components/ProductDetailsLoader ";
 
 const ProductDetails = () => {

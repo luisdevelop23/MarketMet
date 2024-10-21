@@ -3,7 +3,7 @@ const ProductDetailsLoader = ({ value, error }) => {
   const isEmpty = !value && !error;
   function Loading() {
     return (
-      <i className="icon-[eos-icons--loading] h-[200px] w-[200px] text-blue-1"></i>
+      <span className="icon-[eos-icons--loading] h-[200px] w-[200px] text-blue-1"></span>
     );
   }
   function NotProduct() {

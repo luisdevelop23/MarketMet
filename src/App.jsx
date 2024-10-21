@@ -18,11 +18,11 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:product" element={<InitialContent />} />
-        <Route path="/myList" element={<MyList />} />
+        <Route path="/myList/:option" element={<MyList />} />
         <Route path="/basket" element={<Basket />} />
-        <Route path="/Details/:product" element={<ProductDetails />} />
-        <Route path="/Login" element={<LoginPage/>}/>
-        <Route path="/Register" element={<RegisterPage/>}/>
+        <Route path="/details/:product" element={<ProductDetails />} />
+        <Route path="/rogin" element={<LoginPage/>}/>
+        <Route path="/register" element={<RegisterPage/>}/>
         {/* <Route path="/payment" element={} /> */}
       </Routes>
       <Footer />

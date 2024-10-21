@@ -32,7 +32,7 @@ const CardProduct = ({ product }) => {
             {product_star_rating ? (
               <span className="">
                 <span>{product_star_rating}</span>
-                <i className="icon-[iconamoon--star] text-yellow-400"></i>
+                <span className="icon-[iconamoon--star] text-yellow-400"></span>
               </span>
             ) : (
               <></>
@@ -40,7 +40,7 @@ const CardProduct = ({ product }) => {
           </div>
         </div>
         <button className="mt-aut flex w-full items-center justify-center rounded-lg border-2 border-black bg-black py-1 text-white duration-200 ease-in hover:bg-white hover:text-black">
-          <i className="icon-[mdi--cart-outline] size-[30px]"></i>{" "}
+          <span className="icon-[mdi--cart-outline] size-[30px]"></span>{" "}
           <span className="ml-2">Add to cart</span>
         </button>
       </div>
