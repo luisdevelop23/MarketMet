@@ -21,7 +21,7 @@ function App() {
         <Route path="/myList/:option" element={<MyList />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/details/:product" element={<ProductDetails />} />
-        <Route path="/rogin" element={<LoginPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
         {/* <Route path="/payment" element={} /> */}
       </Routes>
