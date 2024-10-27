@@ -15,7 +15,6 @@ const LoginPage = () => {
 
   const Access = async () => {
     const { data, error } = await UserAccess({ email, password });
-    console.log(error, data);
     if (data) {
       saveMyInfo(data);
       navigate("/");

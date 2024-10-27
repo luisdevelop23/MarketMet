@@ -68,9 +68,6 @@ export const ProductsProvider = ({ children }) => {
     setFavorites(data);
   };
 
-  useEffect(() => {
-    MyProducts();
-  }, []);
 
   return (
     <ProductContext.Provider

@@ -29,12 +29,14 @@ async function UserRegister({ username, email, password }) {
       .select();
 
     if (error) {
-      return { data: null, error: "Error al registrar usuario: " + error.message };
+      return {
+        data: null,
+        error: "Error al registrar usuario: " + error.message,
+      };
     }
 
     return { data, error: null };
   } catch (err) {
-    console.error("Error inesperado:", err);
     return { data: null, error: "Error inesperado: " + err.message };
   }
 }

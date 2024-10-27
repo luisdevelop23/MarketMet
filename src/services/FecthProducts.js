@@ -7,7 +7,6 @@ export async function getProducts(product, page = 1, amount = 16) {
     start: (page - 1) * amountProducts,
     end: (page - 1) * amountProducts + amountProducts,
   };
-  console.log(PR);
   // ? product contains a value
   if (product) {
     const { count } = await countProducts(product);
