@@ -69,9 +69,7 @@ const MyAccount = () => {
               </button>
             </div>
             {/* Render de mis listas */}
-            <div className="m-4 w-9/12 rounded-xl bg-white shadow-lg">
               {renderOptions()}
-            </div>
           </div>
         </div>
       </div>
