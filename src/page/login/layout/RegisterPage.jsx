@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import validateEmail from "../../../modules/auth/utils/validateEmail";
 import UserRegister from "../../../modules/auth/UserRegister";
+import { LoginContext } from "../../../context/LoginContext";
 
 const RegisterPage = () => {
+  const { saveMyInfo } = useContext(LoginContext);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [isEmailValid, setIsEmailValid] = useState(true);
-
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState(false);
+   const navigate = useNavigate();
+
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -30,10 +34,15 @@ const RegisterPage = () => {
       setIsEmailValid(false);
     } else {
       setIsEmailValid(true);
-      const { data, error } = await UserRegister({username, email, password });
+      const { data, error } = await UserRegister({ username, email, password });
       console.log(data, error);
       if (error) {
         setError(error.message);
+      }
+      if (data) {
+        setError(false);
+        saveMyInfo(data);
+        navigate("/myaccount/myprofile");
       }
     }
   };

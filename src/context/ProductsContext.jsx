@@ -11,10 +11,6 @@ export const ProductsProvider = ({ children }) => {
   // ?text search
   const [textSearch, setTextSearch] = useState("");
 
-  // ?products filter/search/default
-  const [productsDefault, setProductsDefault] = useState(
-    paginationProductsDefault(0, 16),
-  );
   const [detailProduct, setDetailProduct] = useState([])
   
   const [products, setProducts] = useState([]);
@@ -26,9 +22,6 @@ export const ProductsProvider = ({ children }) => {
 
   // ?Loadings
   const [loadingProducts, setLoadingProducts] = useState(false);
-  const [loadingFavorites, setLoadingFavorites] = useState(false);
-  const [loadingAddFav, setLoadingAddFav] = useState(false);
-  const [loadingRemoveFav, setLoadingRemoveFav] = useState(false);
 
 // const fetchProduct = async (id) => {
 //   const { data, error } = await getProductByAsin(id);
@@ -70,9 +63,14 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts(value, 1);
   };
 
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, []);
+  const MyProducts = async (id) => {
+    const { data, error } = await getMyProducts(id);
+    setFavorites(data);
+  };
+
+  useEffect(() => {
+    MyProducts();
+  }, []);
 
   return (
     <ProductContext.Provider
@@ -85,12 +83,7 @@ export const ProductsProvider = ({ children }) => {
         setLoadingProducts,
         favorites,
         setFavorites,
-        loadingFavorites,
-        setLoadingFavorites,
-        loadingAddFav,
-        setLoadingAddFav,
-        loadingRemoveFav,
-        setLoadingRemoveFav,
+        
         paginationProducts,
         paginationFilterProducts,
       }}

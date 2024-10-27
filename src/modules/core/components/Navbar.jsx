@@ -5,8 +5,7 @@ import { LoginContext } from "../../../context/LoginContext";
 
 const Navbar = () => {
   const { login, user } = useContext(LoginContext);
-  console.log("login", login);
-  console.log("user", user);
+
   return (
     <div className="w-full">
       <div className="top-0 z-10 h-16"></div>
@@ -23,7 +22,7 @@ const Navbar = () => {
           <SearchProducts />
 
           <div className="flex w-1/12 items-center justify-center">
-            <Link to="/myList/myProfile" className="text-[30px] hover:text-blue-2">
+            <Link to="/myaccount/myProfile" className="text-[30px] hover:text-blue-2">
               <span className="icon-[icon-park-outline--like]"></span>
             </Link>
           </div>
@@ -35,7 +34,7 @@ const Navbar = () => {
           {login ? (
             <div className="flex w-2/12 items-center  justify-center">
               <span className="icon-[solar--user-circle-bold-duotone] text-blue-2 text-[40px]">
-                s
+                {""}
               </span>
               <span className="pl-2 text-[15px] nnf-semi-bold">Hello, {user.username}</span>
             </div>

@@ -5,7 +5,6 @@ export const LoginContext = createContext([]);
 export const LoginProvider = ({ children }) => {
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState({});
-  const [myList, setMyList] = useState([]);
 
   // Al cargar la página, verificamos si hay una sesión guardada en localStorage
   useEffect(() => {
@@ -31,12 +30,20 @@ export const LoginProvider = ({ children }) => {
 
   const saveMyInfo = async (obj) => {
     localStorage.setItem("myInfo", JSON.stringify(obj));
+    localStorage.setItem("isLoggedIn", true);
     setUser(obj);
     setLogin(true);
   };
 
+  const logout = () => {
+    localStorage.removeItem("myInfo");
+    localStorage.removeItem("isLoggedIn");
+    setUser({});
+    setLogin(false);
+  };
+
   return (
-    <LoginContext.Provider value={{ login, setLogin, saveMyInfo, user }}>
+    <LoginContext.Provider value={{ login, setLogin, saveMyInfo, user,  logout }}>
       {children}
     </LoginContext.Provider>
   );

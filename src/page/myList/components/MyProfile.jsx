@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { LoginContext } from "../../../context/LoginContext";
 
 const MyProfile = () => {
-  const { login, user } = useContext(LoginContext);
+  const {  user } = useContext(LoginContext);
   const { names, surnames, email, document, phone } = user;
-  console.log(user);
+
   return (
     <div className="w-full p-6">
       <h1 className="nnf-semi-bold text-2xl">Personal Data</h1>
@@ -38,7 +38,7 @@ const MyProfile = () => {
             className="w-full border-b border-black outline-none"
             name="name"
           />
-          
+
         </div>
         <div className="flex flex-col">
           <label htmlFor="name">Phone:</label>
