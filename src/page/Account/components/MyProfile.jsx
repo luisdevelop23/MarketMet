@@ -20,7 +20,12 @@ const MyProfile = () => {
   const [show, setShow] = useState(false);
 
   const showMessage = (msg) => {
-    return <div className=""> <h1 className="nnf-semi-bold">{msg}</h1></div>;
+    return (
+      <div className="">
+        {" "}
+        <h1 className="nnf-semi-bold">{msg}</h1>
+      </div>
+    );
   };
 
   const fetchUser = async () => {
@@ -36,20 +41,21 @@ const MyProfile = () => {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    fetchUser();
+  }, [user]);
 
   const update = async () => {
     console.log(names, surnames, document, phone);
-      const { data, error } = await updateMyInfo(user.id, {
-        names,
-        surnames,
-        document,
-        phone,
-      });
-      if (error) {
-        console.log(error);
-      }
-   
+    const { data, error } = await updateMyInfo(user.id, {
+      names,
+      surnames,
+      document,
+      phone,
+    });
+    if (error) {
+      console.log(error);
+    }
   };
 
   const enableEdit = (item) => {
@@ -193,8 +199,6 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

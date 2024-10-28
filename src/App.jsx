@@ -2,12 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./modules/core/components/Footer";
 import Navbar from "./modules/core/components/Navbar";
+import MyAccount from "./page/Account/layout/MyAccount";
 import Basket from "./page/basket/Basket";
 import HomePage from "./page/home/HomePage";
 import InitialContent from "./page/home/layout/InitialContent";
 import LoginPage from "./page/login/layout/LoginPage";
 import RegisterPage from "./page/login/layout/RegisterPage";
-import MyAccount from "./page/myaccount/layout/MyAccount";
 import ProductDetails from "./page/productDetails/layout/ProductDetails";
 
 function App() {

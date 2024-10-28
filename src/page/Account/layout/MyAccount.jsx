@@ -78,7 +78,7 @@ const MyAccount = () => {
               </button>
             </div>
             {/* Render de mis listas */}
-              {renderOptions()}
+              {user && renderOptions()}
           </div>
         </div>
       </div>
