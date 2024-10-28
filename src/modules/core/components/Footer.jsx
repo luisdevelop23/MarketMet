@@ -39,9 +39,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-blue-2 pb-10">
-        <h1 className="nnf-semi-bold text-center text-xl">© 2022. Todos los derechos reservados.</h1>
-      </div>
     </footer>
   );
 };

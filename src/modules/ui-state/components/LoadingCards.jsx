@@ -11,12 +11,12 @@ const LoadingCards = ({amount}) => {
     <>
       {TOTALLOADING.map((_, index) => (
         <div key={index} className="flex h-full flex-col rounded-lg">
-          <div className="col-span-1 flex h-[400px] flex-col justify-between rounded-lg border-2 border-slate-100 bg-white p-4">
-            <div className="flex h-[200px] w-full items-center justify-center">
-              <div className="h-[200px] w-full   animate-pulse rounded-lg bg-gray-300"></div>
+          <div className="col-span-1 mx-2 flex flex-col justify-around rounded-lg border-2 border-slate-200 bg-white pt-4">
+            <div className="flex h-[150px] w-full items-center justify-center">
+              <div className="h-[150px] w-full   animate-pulse rounded-lg bg-gray-300"></div>
             </div>
-            <div className="mt-2 flex flex-col">
-              <span className="mt-1 w-full animate-pulse rounded-lg bg-gray-300 text-[10px] text-gray-300">
+            <div className="px-4 flex flex-col">
+              <span className="mt-1 w-full  animate-pulse rounded-lg bg-gray-300 text-[10px] text-gray-300">
                 "
               </span>
               <span className="mt-1 w-full animate-pulse rounded-lg bg-gray-300 text-[10px] text-gray-300">
@@ -36,7 +36,7 @@ const LoadingCards = ({amount}) => {
                 </span>
               </div>
             </div>
-            <span className="mt-1 w-full animate-pulse rounded-lg bg-gray-300 py-3 text-[10px] text-gray-300">
+            <span className="mt-1 w-full animate-pulse rounded-b-lg bg-gray-300 py-3 text-[10px] text-gray-300">
               "
             </span>
           </div>
