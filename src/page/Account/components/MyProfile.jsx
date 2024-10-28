@@ -94,10 +94,10 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <div className="m-4 w-9/12 flex-col rounded-xl bg-white p-6 shadow-lg">
+    <div className="m-4 w-11/12 md:w-9/12 flex-col rounded-xl bg-white p-6 shadow-lg">
       <div className="">
         <h1 className="nnf-semi-bold text-2xl">Personal Data</h1>
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
           <div className="flex flex-col">
             <label htmlFor="name">Names:</label>
             <div className="flex">

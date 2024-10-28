@@ -17,19 +17,16 @@ const MyAccount = () => {
         navigate("/login");
       }
     };
-  
+
     checkLoginStatus();
   }, []);
 
-
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   const handleLogout = () => {
     logout();
     navigate("/");
   };
-  
 
   const renderOptions = () => {
     switch (option) {
@@ -46,39 +43,39 @@ const MyAccount = () => {
 
   return (
     <div className="flex w-full items-center justify-center md:h-[60vh]">
-      <div className="flex w-9/12 flex-col">
+      <div className="flex w-full flex-col md:w-9/12">
         <h1 className="nnf-semi-bold pb-4 text-2xl">Hello, {user.username}</h1>
         <div className="w-full">
           {/* Opciones de mis listas */}
-          <div className="flex items-start">
-            <div className="nnf-semi-bold h m-4 flex w-3/12 flex-col rounded-xl bg-white shadow-lg">
+          <div className="flex flex-col items-start md:flex-row">
+            <div className="nnf-semi-bold m-4 flex w-11/12 flex-col rounded-xl bg-white shadow-lg md:w-3/12">
               <Link
                 to="/myaccount/myprofile"
-                className="flex items-center border-b-2 py-4 pl-6 hover:text-gray-2"
+                className="flex items-center justify-center border-b-2 py-4 hover:text-gray-2 md:justify-start md:pl-6"
               >
                 <span>My Profile</span>
               </Link>
               <Link
                 to="/myaccount/mylist"
-                className="flex items-center border-b-2 py-4 pl-6 hover:text-gray-2"
+                className="flex items-center justify-center border-b-2 py-4 hover:text-gray-2 md:justify-start md:pl-6"
               >
                 <span>My List</span>
               </Link>
               <Link
                 to="/myaccount/myorders"
-                className="flex items-center border-b-2 py-4 pl-6 hover:text-gray-2"
+                className="flex items-center justify-center border-b-2 py-4 hover:text-gray-2 md:justify-start md:pl-6"
               >
                 <span>My Orders</span>
               </Link>
               <button
                 onClick={() => handleLogout()}
-                className="flex items-center py-4 pl-6 hover:text-gray-2"
+                className="flex items-center justify-center border-b-2 py-4 hover:text-gray-2 md:justify-start md:pl-6"
               >
                 <span>Log Out</span>
               </button>
             </div>
             {/* Render de mis listas */}
-              {user && renderOptions()}
+            {user && renderOptions()}
           </div>
         </div>
       </div>

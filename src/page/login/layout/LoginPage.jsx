@@ -35,9 +35,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex h-[58vh] w-full items-center justify-center">
-      <div className="flex w-5/12 justify-center">
-        <div className="relative flex w-7/12 flex-col rounded-xl border-2 bg-blue-0 shadow-2xl">
+    <div className="flex md:h-[58vh] h-[70vh] mt-10 md:mt-0  w-full items-center justify-center">
+      <div className="flex lg:w-5/12 w-full justify-center">
+        <div className="relative flex lg:w-7/12 flex-col rounded-xl border-2 bg-blue-0 shadow-2xl">
           <h1 className="nnf-bold py-6 text-center text-4xl">Login</h1>
           {error ?? (
             <div className="flex flex-col items-end px-8 text-center text-red-500">
