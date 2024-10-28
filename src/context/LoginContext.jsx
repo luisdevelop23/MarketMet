@@ -7,26 +7,19 @@ export const LoginProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   // Al cargar la página, verificamos si hay una sesión guardada en localStorage
-  useEffect(() => {
-    const savedLogin = localStorage.getItem("isLoggedIn");
-    const info = localStorage.getItem("myInfo");
+  const init = async () => {
+    const savedLogin = await localStorage.getItem("isLoggedIn");
+    const info =  localStorage.getItem("myInfo");
     if (info) {
       setUser(JSON.parse(info));
       if (savedLogin === "true") {
         setLogin(true);
       }
     }
-  }, []);
-
-  // Cada vez que cambie el estado del login, actualizamos localStorage
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", login);
-  }, [login]);
-
-  const fetchUser = async () => {
-    const { data } = await getProducts();
-    setUser(data[0]);
+    return  savedLogin == null ? false : savedLogin;
   };
+
+  const fetchUser = async () => {};
 
   const saveMyInfo = async (obj) => {
     localStorage.setItem("myInfo", JSON.stringify(obj));
@@ -42,8 +35,12 @@ export const LoginProvider = ({ children }) => {
     setLogin(false);
   };
 
+  useEffect(() => {
+    init();
+    fetchUser();
+  }, []);
   return (
-    <LoginContext.Provider value={{ login, setLogin, saveMyInfo, user,  logout }}>
+    <LoginContext.Provider value={{ login,setLogin, saveMyInfo, user, logout, init }}>
       {children}
     </LoginContext.Provider>
   );

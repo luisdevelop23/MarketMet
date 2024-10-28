@@ -7,7 +7,7 @@ import HomePage from "./page/home/HomePage";
 import InitialContent from "./page/home/layout/InitialContent";
 import LoginPage from "./page/login/layout/LoginPage";
 import RegisterPage from "./page/login/layout/RegisterPage";
-import MyAccount from "./page/myList/layout/MyAccount";
+import MyAccount from "./page/myaccount/layout/MyAccount";
 import ProductDetails from "./page/productDetails/layout/ProductDetails";
 
 function App() {

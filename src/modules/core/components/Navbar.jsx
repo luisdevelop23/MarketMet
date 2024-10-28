@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
-import SearchProducts from "../hook/SearchProducts";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { LoginContext } from "../../../context/LoginContext";
+import SearchProducts from "../hook/SearchProducts";
 
 const Navbar = () => {
-  const { login, user } = useContext(LoginContext);
+  const { user, login } = useContext(LoginContext);
 
   return (
     <div className="w-full">
@@ -22,7 +22,10 @@ const Navbar = () => {
           <SearchProducts />
 
           <div className="flex w-1/12 items-center justify-center">
-            <Link to="/myaccount/myProfile" className="text-[30px] hover:text-blue-2">
+            <Link
+              to="/myaccount/myProfile"
+              className="text-[30px] hover:text-blue-2"
+            >
               <span className="icon-[icon-park-outline--like]"></span>
             </Link>
           </div>
@@ -32,11 +35,13 @@ const Navbar = () => {
             </Link>
           </div>
           {login ? (
-            <div className="flex w-2/12 items-center  justify-center">
-              <span className="icon-[solar--user-circle-bold-duotone] text-blue-2 text-[40px]">
+            <div className="flex w-2/12 items-center justify-center">
+              <span className="icon-[solar--user-circle-bold-duotone] text-[40px] text-blue-2">
                 {""}
               </span>
-              <span className="pl-2 text-[15px] nnf-semi-bold">Hello, {user.username}</span>
+              <span className="nnf-semi-bold pl-2 text-[15px]">
+                Hello, {user.username}
+              </span>
             </div>
           ) : (
             <></>

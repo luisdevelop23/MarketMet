@@ -8,12 +8,21 @@ import MyOrders from "../components/MyOrders";
 const MyAccount = () => {
   const navigate = useNavigate();
   const option = useParams().option;
-  const { login, user, logout } = useContext(LoginContext);
+  const { init, user, logout } = useContext(LoginContext);
 
   useEffect(() => {
-    if (!login) {
-      navigate("/login");
-    }
+    const checkLoginStatus = async () => {
+      const isLoggedIn = await init();
+      if (!isLoggedIn) {
+        navigate("/login");
+      }
+    };
+  
+    checkLoginStatus();
+  }, []);
+
+
+  useEffect(() => {
   }, []);
 
   const handleLogout = () => {
