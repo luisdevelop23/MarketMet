@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import { LoginContext } from "../../../context/LoginContext";
+import { LoginContext } from "../../context/LoginContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import MyProfile from "../components/MyProfile";
-import MyList from "../components/MyList";
-import MyOrders from "../components/MyOrders";
+import MyProfile from "./layout/MyProfile";
+import MyList from "./layout/MyList";
+import MyOrders from "./layout/MyOrders";
 
 const MyAccount = () => {
   const navigate = useNavigate();

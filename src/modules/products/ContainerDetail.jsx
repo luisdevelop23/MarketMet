@@ -25,7 +25,7 @@ const ContainerDetail = ({ detailProduct }) => {
     sales_volume,
   } = detailProduct;
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" flex items-center justify-center w-full">
       <div className="mt-10 flex w-8/12 rounded-2xl bg-white p-4">
         <div className="flex w-3/6 items-center justify-center">
           <img className="h-[360px] py-4" src={product_photo} alt="" />

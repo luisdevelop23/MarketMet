@@ -2,13 +2,13 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./modules/core/components/Footer";
 import Navbar from "./modules/core/components/Navbar";
-import MyAccount from "./page/Account/layout/MyAccount";
+import MyAccount from "./page/Account/MyAccount";
 import Basket from "./page/basket/Basket";
 import HomePage from "./page/home/HomePage";
 import InitialContent from "./page/home/layout/InitialContent";
 import LoginPage from "./page/login/layout/LoginPage";
 import RegisterPage from "./page/login/layout/RegisterPage";
-import ProductDetails from "./page/productDetails/layout/ProductDetails";
+import ProductDetails from "./page/productDetails/ProductDetails";
 
 function App() {
   return (

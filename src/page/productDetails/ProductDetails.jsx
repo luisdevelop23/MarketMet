@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductByAsin } from "../../../services/FecthProducts";
-import ContainerDetail from "../../../modules/products/ContainerDetail";
-import ProductDetailsLoader from "../../../modules/ui-state/components/ProductDetailsLoader ";
+import { getProductByAsin } from "../../services/FecthProducts";
+import ContainerDetail from "../../modules/products/ContainerDetail";
+import ProductDetailsLoader from "../../modules/ui-state/components/ProductDetailsLoader ";
+import ContainerCarousel from "../../modules/card/components/ContainerCarousel";
 
 const ProductDetails = () => {
   const { product } = useParams();
@@ -29,19 +30,28 @@ const ProductDetails = () => {
     };
 
     if (product) {
+      window.scrollTo(0, 0);
+
       fetchProduct(); // Solo llama a la API si hay un valor válido en product
     }
-    console.log(detailProduct);
+    // console.log(detailProduct);
   }, [product]);
 
   return (
-    <>
+    <section className="flex flex-col items-center">
       {loading ? (
         <ProductDetailsLoader value={loading} error={error} />
       ) : (
         <ContainerDetail detailProduct={detailProduct} />
       )}
-    </>
+      <div className="mt-10 flex w-8/12 flex-col rounded-2xl bg-white p-4">
+        <h1 className="text-center text-2xl font-bold">Suggestions</h1>
+        <ContainerCarousel productSearched="4k" title="" />
+        <ContainerCarousel productSearched="moni" title="" />
+        <ContainerCarousel productSearched="acce" title="" />
+        <ContainerCarousel productSearched="tabl" title="" />
+      </div>
+    </section>
   );
 };
 

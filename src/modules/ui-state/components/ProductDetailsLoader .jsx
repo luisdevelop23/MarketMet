@@ -17,7 +17,7 @@ const ProductDetailsLoader = ({ value, error }) => {
     );
   }
   return (
-    <div className="mt-12 flex items-center justify-center">
+    <div className="mt-12 flex items-center justify-center w-full">
       <div className="mt-10 flex h-[50vh] w-8/12 flex-col items-center justify-center rounded-2xl bg-white p-4">
         {isLoading ? <Loading /> : isEmpty ? <></> : <NotProduct />}
       </div>
