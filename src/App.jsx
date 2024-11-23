@@ -9,10 +9,28 @@ import InitialContent from "./page/home/layout/InitialContent";
 import LoginPage from "./page/login/layout/LoginPage";
 import RegisterPage from "./page/login/layout/RegisterPage";
 import ProductDetails from "./page/productDetails/ProductDetails";
+import { useEffect, useState } from "react";
+import supabase from "./services/supabase";
+import { data } from "autoprefixer";
 
 function App() {
+  const [session, setSession] = useState(null);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      console.log("session", session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
-    <>
+    <main className="flex h-[100vh] flex-col justify-between">
       <Navbar />
       {/* rutas */}
       <Routes>
@@ -26,7 +44,7 @@ function App() {
         {/* <Route path="/payment" element={} /> */}
       </Routes>
       <Footer />
-    </>
+    </main>
   );
 }
 

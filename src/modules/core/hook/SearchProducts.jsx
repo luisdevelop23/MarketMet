@@ -3,35 +3,38 @@ import { useNavigate } from "react-router-dom";
 
 const SearchProducts = () => {
   const [Product, setProduct] = useState("");
-  const navigate = useNavigate(); // Hook para navegar programáticamente
+  const navigate = useNavigate();
 
   const searchProducts = (e) => {
-    e.preventDefault(); // Previene el comportamiento por defecto del formulario
-    navigate(`/Products/${Product}`); // Redirige a la ruta deseada
-    console.log("click navigate");
+    e.preventDefault();
+    if (Product.trim() !== "") {
+      navigate(`/Products/${Product.trim()}`);
+    }
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      searchProducts(e); // Llama a la función searchProducts cuando se presiona Enter
+      searchProducts(e);
     }
   };
 
   return (
-    <div className=" flex w-5/12 items-center justify-center">
+    <div className="flex w-full max-w-xl items-center">
+      {/* Input de búsqueda */}
       <input
-        className="w-10/12 rounded-l-xl py-2 pl-4 outline-none"
+        className="flex-1 rounded-l-md border border-gray-300 py-2 px-4 text-sm outline-none focus:border-blue-1 focus:ring focus:ring-blue-200"
         type="search"
-        placeholder="Buscar..."
+        placeholder="Search for products..."
         onChange={(e) => setProduct(e.target.value)}
         onKeyDown={handleKeyDown}
         value={Product}
       />
+      {/* Botón de búsqueda */}
       <button
         onClick={searchProducts}
-        className="w-1/12 rounded-r-xl bg-blue-1 py-2 text-white"
+        className="rounded-r-md bg-blue-1 px-4 py-2 text-sm text-white hover:bg-blue-2"
       >
-        <span className="icon-[lucide--search] text-[18px]"></span>
+        <span className="icon-[lucide--search] text-lg"></span>
       </button>
     </div>
   );

@@ -22,8 +22,8 @@ const InitialContent = () => {
     paginationFilterProducts(product);
   }, [product]);
   return (
-    <>
-      <div className="mx-auto flex flex-col  mt-16 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
+    <header>
+      <div className="mx-auto flex flex-col  mt-3 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
         {loadingProducts ? (
           <ContainerCards>
             <LoadingCards />
@@ -39,7 +39,7 @@ const InitialContent = () => {
         )}
         {products.length === 0 ? <></> : <Pagination />}
       </div>
-    </>
+    </header>
   );
 };
 

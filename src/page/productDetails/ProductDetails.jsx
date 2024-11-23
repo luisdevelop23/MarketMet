@@ -47,9 +47,7 @@ const ProductDetails = () => {
       <div className="mt-10 flex w-8/12 flex-col rounded-2xl bg-white p-4">
         <h1 className="text-center text-2xl font-bold">Suggestions</h1>
         <ContainerCarousel productSearched="4k" title="" />
-        <ContainerCarousel productSearched="moni" title="" />
         <ContainerCarousel productSearched="acce" title="" />
-        <ContainerCarousel productSearched="tabl" title="" />
       </div>
     </section>
   );

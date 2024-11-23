@@ -1,46 +1,32 @@
 import { createContext, useEffect, useState } from "react";
+import { fetchMyInfo } from "../services/FetchMyInfo";
+import { AuthContext } from "./AuthContext";
 
 export const LoginContext = createContext([]);
 
 export const LoginProvider = ({ children }) => {
-  const [login, setLogin] = useState(false);
-  const [user, setUser] = useState({});
+  const { id } = useContext(AuthContext);
+  const [user, setUser] = useState(null);
 
-  // Al cargar la página, verificamos si hay una sesión guardada en localStorage
-  const init = async () => {
-    const savedLogin = await localStorage.getItem("isLoggedIn");
-    const info =  localStorage.getItem("myInfo");
-    if (info) {
-      setUser(JSON.parse(info));
-      if (savedLogin === "true") {
-        setLogin(true);
-      }
+  const fetchUser = async () => {
+    if (!id) {
+      return;
     }
-    return  savedLogin == null ? false : savedLogin;
-  };
-
-  const fetchUser = async () => {};
-
-  const saveMyInfo = async (obj) => {
-    localStorage.setItem("myInfo", JSON.stringify(obj));
-    localStorage.setItem("isLoggedIn", true);
-    setUser(obj);
-    setLogin(true);
-  };
-
-  const logout = () => {
-    localStorage.removeItem("myInfo");
-    localStorage.removeItem("isLoggedIn");
-    setUser({});
-    setLogin(false);
+    try {
+      const { data, error } = await fetchMyInfo(id);
+      setUser(data[0]);
+      return { data, error };
+    } catch (error) {
+      console.log(error);
+      return { data: null, error: error.message };
+    }
   };
 
   useEffect(() => {
-    init();
     fetchUser();
-  }, []);
+  }, [id]);
   return (
-    <LoginContext.Provider value={{ login,setLogin, saveMyInfo, user, logout, init }}>
+    <LoginContext.Provider value={{  user }}>
       {children}
     </LoginContext.Provider>
   );

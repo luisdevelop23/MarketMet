@@ -6,9 +6,8 @@ export async function fetchMyInfo(id) {
   }
   let { data, error } = await supabase
     .from("users")
-    .select("email,names,surnames,phone,document")
+    .select("names,surnames,phone,document")
     .eq("id", id);
-
   if (error) {
     return { data: null, error: error.message };
   }
