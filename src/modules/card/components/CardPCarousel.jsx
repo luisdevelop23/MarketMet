@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useResponsiveMaxLength } from "../hooks/respondiveTextItems";
 import formatTextLength from "../utils/Utils";
@@ -15,8 +14,8 @@ const CardPCarousel = ({ product }) => {
   } = product;
 
   return (
-    <div className="flex flex-col rounded-lg md:h-[300px]">
-      <div className="flex flex-col justify-around rounded-lg border-2 border-slate-200 bg-white pt-2 md:pt-4">
+    <div className="flex flex-col rounded-lg md:h-[300px] ">
+      <div className="flex flex-col justify-around rounded-lg border-2 border-slate-200 bg-white pt-2 md:pt-4 h-[200px] md:h-auto">
         <div className="flex h-[100px] w-full items-center justify-center md:h-[150px]">
           <img
             src={product_photo}

@@ -44,10 +44,10 @@ const ProductDetails = () => {
       ) : (
         <ContainerDetail detailProduct={detailProduct} />
       )}
-      <div className="mt-10 flex w-11/12 flex-col items-center rounded-2xl bg-white p-4 md:w-11/12 lg:w-11/12 xl:w-10/12">
+      <div className="mt-10 flex w-full flex-col items-center rounded-2xl bg-white p-4 md:w-11/12 lg:w-11/12 xl:w-10/12">
         <h1 className="text-center text-2xl font-bold">Suggestions</h1>
         <ContainerCarousel productSearched="4k" title="" />
-        <ContainerCarousel productSearched="acce" title="" />
+        <ContainerCarousel productSearched="gal" title="" />
       </div>
     </section>
   );

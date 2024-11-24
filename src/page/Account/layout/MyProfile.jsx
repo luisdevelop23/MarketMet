@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { LoginContext } from "../../../context/LoginContext";
 import { fetchMyInfo } from "../../../services/FetchMyInfo";
 import { updateMyInfo } from "../../../services/UpdateMyInfo";
+import { AuthContext } from "../../../context/AuthContext";
+import { postMyInfo } from "../../../services/PostMyInfo";
 
 const MyProfile = () => {
-  const { user } = useContext(LoginContext);
+  const { session, fetchUser, user } = useContext(AuthContext);
 
   const [names, setNames] = useState("");
   const [surnames, setSurnames] = useState("");
@@ -28,9 +30,9 @@ const MyProfile = () => {
     );
   };
 
-  const fetchUser = async () => {
+  const fetch = async () => {
     try {
-      const { data } = await fetchMyInfo(user.id);
+      const { data } = await fetchUser();
       if (data[0]) {
         setNames(data[0].names);
         setSurnames(data[0].surnames);
@@ -42,17 +44,30 @@ const MyProfile = () => {
     }
   };
   useEffect(() => {
-    fetchUser();
-  }, [user]);
+    fetch();
+  }, []);
 
   const update = async () => {
-    console.log(names, surnames, document, phone);
-    const { data, error } = await updateMyInfo(user.id, {
+    const { data, error } = await updateMyInfo(session.user.id, {
       names,
       surnames,
       document,
       phone,
     });
+    if (error) {
+      console.log(error);
+    }
+    console.log(data)
+  };
+
+  const post = async () => {
+    const { data, error } = await postMyInfo(session.user.id, {
+      names,
+      surnames,
+      document,
+      phone,
+    });
+    console.log(data);
     if (error) {
       console.log(error);
     }
@@ -84,7 +99,14 @@ const MyProfile = () => {
     setstdocument(true);
     setstphone(true);
     setSave(false);
-    update();
+    if (!user) {
+      console.log("post")
+      post();
+
+    } else {
+      console.log("update")
+      update();
+    }
   };
 
   useEffect(() => {
@@ -94,10 +116,10 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <div className="m-4 w-11/12 md:w-9/12 flex-col rounded-xl bg-white p-6 shadow-lg">
+    <div className="m-4 w-11/12 flex-col rounded-xl bg-white p-6 shadow-lg md:w-9/12">
       <div className="">
-        <h1 className="nnf-semi-bold text-2xl pb-5">Personal Data</h1>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-10 h-80">
+        <h1 className="nnf-semi-bold pb-5 text-2xl">Personal Data</h1>
+        <div className="grid md:h-80 grid-cols-1 gap-10 md:grid-cols-2">
           <div className="flex flex-col">
             <label htmlFor="name">Names:</label>
             <div className="flex">
@@ -182,7 +204,7 @@ const MyProfile = () => {
           </div>
           <div className="col-span-1 flex flex-col">
             <label htmlFor="name">Email:</label>
-            <h2 className="text-gray-500">{user.email}</h2>
+            <h2 className="text-gray-500">{session.user.email}</h2>
           </div>
           <div className="col-span-1 flex flex-col items-center justify-center">
             <button

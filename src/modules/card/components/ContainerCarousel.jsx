@@ -6,17 +6,17 @@ import CardPCarousel from "./CardPCarousel";
 const ContainerCarousel = ({ productSearched, title }) => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(3); 
+  const [visibleProducts, setVisibleProducts] = useState(3);
 
   useEffect(() => {
     const updateVisibleProducts = () => {
       const width = window.innerWidth;
       if (width >= 1280) {
-        setVisibleProducts(7); // `lg`
-      }else if (width >= 1024) {
-        setVisibleProducts(6); // `lg`
+        setVisibleProducts(7); // `xl`
+      } else if (width >= 1024) {
+        setVisibleProducts(5); // `lg`
       } else if (width >= 768) {
-        setVisibleProducts(4); // `md`
+        setVisibleProducts(3); // `md`
       } else {
         setVisibleProducts(3); // `sm`
       }
@@ -38,7 +38,7 @@ const ContainerCarousel = ({ productSearched, title }) => {
       const { data, error } = await paginationFilterProducts(
         productSearched,
         0,
-        10, 
+        10,
       );
 
       if (error) {
@@ -52,7 +52,7 @@ const ContainerCarousel = ({ productSearched, title }) => {
   }, [productSearched]);
 
   return (
-    <div className="mt-4 flex w-full  mx-auto md:w-full flex-col items-center">
+    <div className="mx-auto  mt-4 flex w-full flex-col items-center py-4 md:w-full">
       <div className="rounded-3 flex w-full pb-2">
         {title.length > 0 && (
           <h2 className="nnf-semi-bold w-full rounded-t-xl bg-blue-1 px-3 py-2 text-center text-sm uppercase text-white md:w-auto">
@@ -65,7 +65,7 @@ const ContainerCarousel = ({ productSearched, title }) => {
           <LoadingCards />
         </div>
       ) : (
-        <div className="grid w-full grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 md:gap-4">
+        <div className="grid w-full grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5 xl:grid-cols-7">
           {products.slice(0, visibleProducts).map((product) => (
             <CardPCarousel key={product.asin} product={product} />
           ))}

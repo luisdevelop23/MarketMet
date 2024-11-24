@@ -8,7 +8,7 @@ export const useResponsiveMaxLength = () => {
         const width = window.innerWidth;
         if (width <= 640) setMaxLength(15); 
         else if (width <= 1024) setMaxLength(20); 
-        else setMaxLength(35);
+        else setMaxLength(30);
       };
   
       updateMaxLength(); 

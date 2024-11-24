@@ -10,7 +10,6 @@ const MyAccount = () => {
   const navigate = useNavigate();
   const option = useParams().option;
   const { user, session } = useContext(AuthContext);
-
   useEffect(() => {
     const checkLoginStatus = async () => {
       if (!session) {
@@ -42,12 +41,19 @@ const MyAccount = () => {
   };
 
   return (
-    <header className="flex w-full items-center justify-center">
+    <header className="flex w-full items-center justify-center ">
       <div className="flex w-full flex-col md:w-9/12">
-        <h1 className="nnf-semi-bold pb-4 text-3xl">
-          {/* Hello, {user.names} {user.surnames} */}
-          <span className="icon-[twemoji--raising-hands-medium-light-skin-tone]" />
-        </h1>
+        {session && user ? (
+          <h1 className="nnf-semi-bold pb-4 text-3xl">
+            Hello, {user.names} {user.surnames}
+            <span className="icon-[twemoji--raising-hands-medium-light-skin-tone]" />
+          </h1>
+        ) : (
+          <h1 className="nnf-semi-bold pb-4 text-3xl">
+            hello new users
+            <span className="icon-[twemoji--raising-hands-medium-light-skin-tone]" />
+          </h1>
+        )}
         <div className="w-full">
           {/* Opciones de mis listas */}
           <div className="flex flex-col items-start md:flex-row">
@@ -79,7 +85,7 @@ const MyAccount = () => {
               </button>
             </div>
             {/* Render de mis listas */}
-            {/* {user && renderOptions()} */}
+            {session && renderOptions()}
           </div>
         </div>
       </div>

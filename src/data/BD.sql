@@ -35,3 +35,40 @@ CREATE TABLE users (
 /* agregar auth_id a la tabla users, para saber a que usuario identificado pertenece la información */
 ALTER TABLE users
 ADD COLUMN auth_id UUID UNIQUE REFERENCES auth.users(id) ON DELETE SET NULL;
+
+
+
+/* política de privacidad */
+/* name: INSERT-USER-POLICY */
+create policy "INSERT-USER-POLICY"
+on "public"."users"
+as PERMISSIVE
+for INSERT
+to authenticated
+with check (
+true
+);
+
+/* name: SELECT-USER-POLICY */
+create policy "SELECT-USER-POLICY "
+on "public"."users"
+as PERMISSIVE
+for SELECT
+to authenticated
+using  (
+    (( SELECT auth.uid() AS uid) = auth_id)
+)
+
+
+/* name: UPDATE-USER-POLICY */
+create policy "UPDATE-USER-POLICY"
+on "public"."users"
+as PERMISSIVE
+for UPDATE
+to authenticated
+using  (
+    (( SELECT auth.uid() AS uid) = auth_id)
+)
+with check (
+    (( SELECT auth.uid() AS uid) = auth_id)
+)

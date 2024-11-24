@@ -6,6 +6,7 @@ import ContainerCards from "../../../modules/card/components/ContainerCards";
 import Pagination from "../../../modules/core/components/Pagination";
 import LoadingCards from "../../../modules/ui-state/components/LoadingCards";
 import NotProductsCards from "../../../modules/ui-state/components/NotProductsCards";
+import FilterProducts from "../components/FilterProducts";
 
 const InitialContent = () => {
   const { product } = useParams();
@@ -23,7 +24,7 @@ const InitialContent = () => {
   }, [product]);
   return (
     <header>
-      <div className="mx-auto flex flex-col  mt-3 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
+      <div className="mx-auto flex  flex-col mt-3 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
         {loadingProducts ? (
           <ContainerCards>
             <LoadingCards />
@@ -37,8 +38,8 @@ const InitialContent = () => {
         ) : (
           <NotProductsCards />
         )}
-        {products.length === 0 ? <></> : <Pagination />}
       </div>
+        {products.length === 0 ? <></> : <Pagination />}
     </header>
   );
 };

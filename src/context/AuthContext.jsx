@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import supabase from "../services/supabase";
+import { fetchMyInfo } from "../services/FetchMyInfo";
 
 export const AuthContext = createContext([]);
 export const AuthProvider = ({ children }) => {
@@ -13,12 +14,9 @@ export const AuthProvider = ({ children }) => {
       return;
     }
     try {
-      let { data, error } = await supabase
-        .from("users")
-        .select("names,surnames,phone,document")
-        .eq("auth_id", id);
-        console.log(data[0])
+      let { data, error } = await fetchMyInfo(id);
       setUser(data[0]);
+      return { data };
     } catch (error) {
       console.log(error);
     }
@@ -43,11 +41,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     fetchUser();
-    console.log("user", user);
   }, [session]);
 
   return (
-    <AuthContext.Provider value={{ session, user }}>
+    <AuthContext.Provider value={{ session, user, fetchUser }}>
       {children}
     </AuthContext.Provider>
   );
