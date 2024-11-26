@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import supabase from "./supabase";
+import supabase from "../supabase";
 
 
 export async function getMyProducts(user) {

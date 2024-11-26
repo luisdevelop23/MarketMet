@@ -29,7 +29,7 @@ const Carousel = () => {
 
   return (
     <div className="flex flex-col items-center justify-center b w-full">
-      <div className="relative w-full  overflow-hidden rounded-lg">
+      <div className="relative w-full  overflow-hidden ">
         {/* Contenido del carrusel */}
         <div
           className="flex transition-transform duration-500"

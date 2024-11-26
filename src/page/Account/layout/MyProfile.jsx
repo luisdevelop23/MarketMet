@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../../context/LoginContext";
-import { fetchMyInfo } from "../../../services/FetchMyInfo";
-import { updateMyInfo } from "../../../services/UpdateMyInfo";
 import { AuthContext } from "../../../context/AuthContext";
-import { postMyInfo } from "../../../services/PostMyInfo";
+import { postMyInfo } from "../../../services/user/PostMyInfo";
+import { updateMyInfo } from "../../../services/user/UpdateMyInfo";
 
 const MyProfile = () => {
   const { session, fetchUser, user } = useContext(AuthContext);

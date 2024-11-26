@@ -14,23 +14,24 @@ const CardPCarousel = ({ product }) => {
   } = product;
 
   return (
-    <div className="flex flex-col rounded-lg md:h-[300px] ">
-      <div className="flex flex-col justify-around rounded-lg border-2 border-slate-200 bg-white pt-2 md:pt-4 h-[200px] md:h-auto">
-        <div className="flex h-[100px] w-full items-center justify-center md:h-[150px]">
+    <div className="group flex flex-col rounded-lg">
+      <div className="flex h-[200px] flex-col justify-around rounded-lg border-2 border-slate-200 bg-white pt-2 md:h-auto md:pt-4">
+        <div className="flex h-[100px] w-full items-center justify-center p-1 md:h-[150px]">
           <img
             src={product_photo}
             alt="Product"
-            className="h-[100px] rounded-lg md:h-[150px]"
+            className="h-[100px] transform rounded-lg duration-200 ease-in group-hover:scale-105 md:h-[140px]"
           />
         </div>
         <Link
           to={`/details/${asin}`}
           className="px-2 lowercase hover:text-blue-600 hover:underline md:px-4 lg:text-[15px]"
         >
-          <h1 className="text-sm md:text-lg mt-3">
+          <h1 className="mt-3 text-sm md:text-lg">
             {formatTextLength(product_title, MAX_LENGTH)}
           </h1>
         </Link>
+
         <div className="flex flex-grow flex-col items-center pb-1 md:px-4">
           <div className="flex w-full items-start justify-around text-sm md:text-lg">
             <h3 className="">${product_price}</h3>

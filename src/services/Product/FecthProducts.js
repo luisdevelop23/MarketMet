@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import supabase from "../supabase";
 
 export async function getProducts(product, page = 1, amount = 16) {
   let amountProducts = amount - 1;

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { fetchMyInfo } from "../services/FetchMyInfo";
+import { fetchMyInfo } from "../services/user/FetchMyInfo";
 import { AuthContext } from "./AuthContext";
 
 export const LoginContext = createContext([]);

@@ -3,7 +3,7 @@ import {
   getProductByAsin,
   getProducts,
   paginationProductsDefault,
-} from "../services/FecthProducts";
+} from "../services/Product/FecthProducts";
 
 export const ProductContext = createContext([]);
 

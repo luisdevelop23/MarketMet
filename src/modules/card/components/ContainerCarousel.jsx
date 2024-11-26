@@ -1,68 +1,86 @@
 import { useEffect, useState } from "react";
-import { paginationFilterProducts } from "../../../services/FecthProducts";
+import { paginationFilterProducts } from "../../../services/Product/FecthProducts";
 import LoadingCards from "../../ui-state/components/LoadingCards";
 import CardPCarousel from "./CardPCarousel";
+import { FetchRamdonProducts } from "../../../services/Product/FetchRamdonProducts";
 
-const ContainerCarousel = ({ productSearched, title }) => {
-  const [loading, setLoading] = useState(true);
+const ContainerCarousel = ({
+  productSearched,
+  title,
+  cant = 10,
+  detail = false,
+}) => {
   const [products, setProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState(3);
 
   useEffect(() => {
     const updateVisibleProducts = () => {
       const width = window.innerWidth;
-      if (width >= 1280) {
+      if (width >= 1280)
         setVisibleProducts(7); // `xl`
-      } else if (width >= 1024) {
+      else if (width >= 1024)
         setVisibleProducts(5); // `lg`
-      } else if (width >= 768) {
+      else if (width >= 768)
         setVisibleProducts(3); // `md`
-      } else {
-        setVisibleProducts(3); // `sm`
-      }
+      else setVisibleProducts(3); // `sm`
     };
 
     updateVisibleProducts();
     window.addEventListener("resize", updateVisibleProducts);
-
-    return () => {
-      window.removeEventListener("resize", updateVisibleProducts);
-    };
+    return () => window.removeEventListener("resize", updateVisibleProducts);
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-    const fetchProducts = async () => {
-      if (productSearched.length === 0) return;
-
+    const fetchProductsFilter = async () => {
       const { data, error } = await paginationFilterProducts(
         productSearched,
         0,
-        10,
+        cant,
       );
-
       if (error) {
         console.error("Error al obtener productos:", error);
       } else {
         setProducts(data);
       }
     };
-    fetchProducts();
-    setLoading(false);
-  }, [productSearched]);
+    const fetchProductsRamdon = async () => {
+      const { data, error } = await FetchRamdonProducts(cant);
+      if (error) {
+        console.error("Error al obtener productos:", error);
+      } else {
+        setProducts(data);
+      }
+    };
+
+    if (productSearched) {
+      fetchProductsFilter();
+    } else {
+      fetchProductsRamdon();
+    }
+  }, []);
+
+  const loading = products.length === 0 && productSearched.length > 0;
 
   return (
-    <div className="mx-auto  mt-4 flex w-full flex-col items-center py-4 md:w-full">
-      <div className="rounded-3 flex w-full pb-2">
-        {title.length > 0 && (
+    <div className="mx-auto mt-4 flex w-full flex-col items-center py-4 md:w-full">
+      {/* Título */}
+      {title && title.length > 0 && (
+        <div className="rounded-3 flex w-full pb-2">
           <h2 className="nnf-semi-bold w-full rounded-t-xl bg-blue-1 px-3 py-2 text-center text-sm uppercase text-white md:w-auto">
             {title}
           </h2>
-        )}
-      </div>
+        </div>
+      )}
+      {/* Contenido */}
       {loading ? (
-        <div className="grid w-11/12 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-6">
-          <LoadingCards />
+        <div className="grid w-full grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5 xl:grid-cols-7">
+          <LoadingCards amount={visibleProducts} />
+        </div>
+      ) : detail ? (
+        <div className="grid w-full grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5 xl:grid-cols-7">
+          {products.map((product) => (
+            <CardPCarousel key={product.asin} product={product} />
+          ))}
         </div>
       ) : (
         <div className="grid w-full grid-cols-3 gap-1 sm:grid-cols-3 md:grid-cols-3 md:gap-4 lg:grid-cols-5 xl:grid-cols-7">

@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import supabase from "../services/supabase";
-import { fetchMyInfo } from "../services/FetchMyInfo";
+import { fetchMyInfo } from "../services/user/FetchMyInfo";
 
 export const AuthContext = createContext([]);
 export const AuthProvider = ({ children }) => {

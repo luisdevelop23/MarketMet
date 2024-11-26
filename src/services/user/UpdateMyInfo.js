@@ -1,15 +1,16 @@
-import supabase from "./supabase";
+import supabase from "../supabase";
 
-export async function postMyInfo(id, obj) {
+export async function updateMyInfo(id, obj) {
+  // console.log(obj,id,"upjs")
   const { names, surnames, document, phone } = obj;
   const { data, error } = await supabase
     .from("users")
-    .insert({
+    .update({
       names: names,
       surnames: surnames,
       document: document,
       phone: phone,
-      auth_id: id,
-    });
+    })
+    .eq("auth_id", id);
   return { data, error };
 }
