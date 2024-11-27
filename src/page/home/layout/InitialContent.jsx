@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ProductContext } from "../../../context/ProductsContext";
 import CardProduct from "../../../modules/card/components/CardProduct";

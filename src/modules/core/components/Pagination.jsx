@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../../context/ProductsContext";
 
 const Pagination = () => {

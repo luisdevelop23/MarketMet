@@ -1,7 +1,9 @@
-export const fetchMyProducts = async (user) => {
-    let { data: myproducts, error } = await supabase
-        .from("vlpu")
+import supabase from "../supabase";
+
+export const fetchMyProducts = async (id) => {
+    let { data, error } = await supabase
+        .from("myfavoriteproducts")
         .select("*")
-        .eq("username", user);
-    return { myproducts, error };
+        .eq("user_id", id);
+    return { data, error };
 };

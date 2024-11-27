@@ -14,25 +14,11 @@ import supabase from "./services/supabase";
 import { data } from "autoprefixer";
 
 function App() {
-  const [session, setSession] = useState(null);
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      console.log("session", session);
-    });
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-    return () => subscription.unsubscribe();
-  }, []);
-
   return (
-    <main className="flex h-[100vh] flex-col justify-between">
+    <main className="flex flex-col h-screen justify-between">
       <Navbar />
       {/* rutas */}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/:product" element={<InitialContent />} />

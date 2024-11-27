@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 
-const ProductFavorite = () => {
+const ProductFavorite = ({ product }) => {
+  const { product_title, product_price, product_photo, product_id } = product;
   return (
-    <div className="flex border-b-2 border-slate-200 p-2">
-      <div className="mr-4">
-        <img
-          src="https://images.pexels.com/photos/1118875/pexels-photo-1118875.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
-          className="h-[100px] w-[100px] rounded-lg"
-        />
+    <div className="flex  shadow-lg rounded-md border-2 border-slate-200">
+      <div className="flex w-2/12 items-center justify-center">
+        <img src={product_photo} className="h-[100px] rounded-lg" />
       </div>
-      <div className="relative flex w-full flex-col justify-around">
-        <button className="absolute right-0 top-0 text-[30px]">
-          <span className="icon-[ion--close-circle-outline] hover:text-red-500" />{" "}
+      <div className="flex w-9/12 flex-col justify-around border-r-2 border-slate-200 pl-2">
+        <Link to={`/details/${product_id}`} className="nnf-semi-bold text-sm hover:text-blue-600">
+          {product_title}
+        </Link>
+        <h2 className="text-lg">${product_price}</h2>
+      </div>
+      <div className="flex w-1/12 items-center justify-center">
+        <button  className="lg:text-[40px] text-gray-500 hover:text-red-500 transition duration-200">
+          <span className="icon-[tabler--trash]" />
         </button>
-        <Link className="nnf-semi-bold text-xl">Product name</Link>
-        <h2 className="text-lg">Price</h2>
       </div>
     </div>
   );

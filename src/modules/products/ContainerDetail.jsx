@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { PostMyProducts } from "../../services/FavoriteProducts/PostMyProducts";
 import { DeleteMyProducts } from "../../services/FavoriteProducts/DeleteMyProducts";
@@ -8,7 +8,7 @@ const ContainerDetail = ({ detailProduct }) => {
   const { session } = useContext(AuthContext);
   const [count, setCount] = useState(1);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [loadingFavorite, setLoadingFavorite] = useState(false); // Estado de carga
+  const [loadingFavorite, setLoadingFavorite] = useState(true); // Estado de carga
 
   const {
     asin,
@@ -27,6 +27,7 @@ const ContainerDetail = ({ detailProduct }) => {
         return;
       }
       setIsFavorite(data.length > 0);
+      setLoadingFavorite(false); // Termina el spinner
     };
     checkFavorite();
   }, [asin]);
@@ -128,7 +129,7 @@ const ContainerDetail = ({ detailProduct }) => {
             ) : isFavorite ? (
               <span className="icon-[mdi--heart] text-2xl" />
             ) : (
-              <span className={`icon-[mdi--heart-outline] `}></span>
+              <span className={`icon-[mdi--heart-outline]`}></span>
             )}
           </button>
 

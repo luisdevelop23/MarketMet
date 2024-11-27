@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { postMyInfo } from "../../../services/user/PostMyInfo";
 import { updateMyInfo } from "../../../services/user/UpdateMyInfo";
+import { fetchMyInfo } from "../../../services/user/FetchMyInfo";
 
 const MyProfile = () => {
-  const { session, fetchUser, user } = useContext(AuthContext);
+  const { session, user } = useContext(AuthContext);
 
   const [names, setNames] = useState("");
   const [surnames, setSurnames] = useState("");
@@ -30,7 +31,7 @@ const MyProfile = () => {
 
   const fetch = async () => {
     try {
-      const { data } = await fetchUser();
+      const { data } = await fetchMyInfo(session.user.id);
       if (data[0]) {
         setNames(data[0].names);
         setSurnames(data[0].surnames);
@@ -55,7 +56,8 @@ const MyProfile = () => {
     if (error) {
       console.log(error);
     }
-    console.log(data)
+    // window.location.reload();
+
   };
 
   const post = async () => {
@@ -69,6 +71,8 @@ const MyProfile = () => {
     if (error) {
       console.log(error);
     }
+    //refrescar la pagina
+    // window.location.reload();
   };
 
   const enableEdit = (item) => {
@@ -98,18 +102,17 @@ const MyProfile = () => {
     setstphone(true);
     setSave(false);
     if (!user) {
-      console.log("post")
+      console.log("post");
       post();
-
     } else {
-      console.log("update")
+      console.log("update");
       update();
     }
   };
 
   useEffect(() => {
     if (user) {
-      fetchUser();
+      fetch();
     }
   }, []);
 
@@ -117,7 +120,7 @@ const MyProfile = () => {
     <div className="m-4 w-11/12 flex-col rounded-xl bg-white p-6 shadow-lg md:w-9/12">
       <div className="">
         <h1 className="nnf-semi-bold pb-5 text-2xl">Personal Data</h1>
-        <div className="grid md:h-80 grid-cols-1 gap-10 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 md:h-80 md:grid-cols-2">
           <div className="flex flex-col">
             <label htmlFor="name">Names:</label>
             <div className="flex">

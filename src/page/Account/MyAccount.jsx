@@ -9,18 +9,14 @@ import { logoutUser } from "../../Auth/logoutUser";
 const MyAccount = () => {
   const navigate = useNavigate();
   const option = useParams().option;
-  const { user, session } = useContext(AuthContext);
+  const { user, session, login, loading } = useContext(AuthContext);
+
   useEffect(() => {
-    const checkLoginStatus = async () => {
-      if (!session) {
-        navigate("/login");
-      }
-    };
-
-    checkLoginStatus();
-  }, []);
-
-  useEffect(() => {}, []);
+    // Espera hasta que la carga inicial haya terminado
+    if (!loading && !login) {
+      navigate("/login");
+    }
+  }, [loading, login, navigate]);
 
   const handleLogout = async () => {
     logoutUser();
@@ -40,24 +36,28 @@ const MyAccount = () => {
     }
   };
 
+  if (loading) {
+    return <div>Cargando...</div>; // Muestra un mensaje mientras carga
+  }
+
   return (
-    <header className="flex w-full items-center justify-center ">
-      <div className="flex w-full flex-col md:w-9/12">
+    <header className="flex w-full items-start h-min-[100vh]  justify-center bg-slate-100 ">
+      <div className="flex w-full flex-col lg:w-10/12 xl:w-9/12 pt-6 ">
         {session && user ? (
-          <h1 className="nnf-semi-bold pb-4 text-3xl">
-            Hello, {user.names} {user.surnames}
+          <h1 className="nnf-semi-bold pb-4 text-3xl ml-4">
+            Hello, {user.names}
             <span className="icon-[twemoji--raising-hands-medium-light-skin-tone]" />
           </h1>
         ) : (
-          <h1 className="nnf-semi-bold pb-4 text-3xl">
+          <h1 className="nnf-semi-bold pb-4 text-3xl mr-4">
             hello new users
             <span className="icon-[twemoji--raising-hands-medium-light-skin-tone]" />
           </h1>
         )}
-        <div className="w-full">
+        <div className="w-full ">
           {/* Opciones de mis listas */}
-          <div className="flex flex-col items-start md:flex-row">
-            <div className="nnf-semi-bold m-4 flex w-11/12 flex-col rounded-xl bg-white shadow-lg md:w-3/12">
+          <div className="flex flex-col items-start md:flex-row ">
+            <div className="nnf-semi-bold m-4 flex w-11/12 flex-col  rounded-xl bg-white shadow-lg md:w-3/12">
               <Link
                 to="/myaccount/myprofile"
                 className="flex items-center justify-center border-b-2 py-4 hover:text-gray-2 md:justify-start md:pl-6"

@@ -26,7 +26,7 @@ const Navbar = () => {
           </div>
 
           {/* Icons */}
-          <div className="flex items-center space-x-4 w-full  md:w-4/12  justify-around">
+          <div className="flex w-full items-center justify-around space-x-4 md:w-4/12">
             {/* My Account */}
             <Link
               to="/myaccount/myProfile"
@@ -45,10 +45,7 @@ const Navbar = () => {
 
             {/* User Info */}
             {user && session && (
-              <div className=" items-center lg:flex hidden md:block ">
-                <span className="icon-[solar--user-circle-bold-duotone] text-2xl text-blue-2 sm:text-3xl md:text-4xl">
-                  {""}
-                </span>
+              <div className="hidden items-center md:block lg:flex">
                 <span className="nnf-semi-bold pl-2 text-sm sm:text-base">
                   Hello, {user.names}
                 </span>

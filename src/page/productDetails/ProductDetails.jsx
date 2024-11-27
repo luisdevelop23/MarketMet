@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductByAsin } from "../../services/Product/FecthProducts";
 import ContainerDetail from "../../modules/products/ContainerDetail";

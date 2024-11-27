@@ -21,7 +21,16 @@ export const LoginProvider = ({ children }) => {
       return { data: null, error: error.message };
     }
   };
-
+  const init = async () => {
+    const savedLogin = await localStorage.getItem("isLoggedIn");
+    const info =  localStorage.getItem("myInfo");
+    if (info) {
+      setUser(JSON.parse(info));
+      if (savedLogin === "true") {
+        setLogin(true);
+      }
+    }
+  };
   useEffect(() => {
     fetchUser();
   }, [id]);
