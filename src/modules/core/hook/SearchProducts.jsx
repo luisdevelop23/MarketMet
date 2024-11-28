@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SearchProducts = () => {
   const [Product, setProduct] = useState("");
+  const producturl = useParams().product;
   const navigate = useNavigate();
 
   const searchProducts = (e) => {
     e.preventDefault();
     if (Product.trim() !== "") {
-      navigate(`/Products/${Product.trim()}`);
+      navigate(`/Products/${Product.trim()}?page=1`);
     }
   };
 
@@ -18,11 +19,17 @@ const SearchProducts = () => {
     }
   };
 
+  useEffect(() => {
+    if (producturl) {
+      setProduct(producturl);
+    }
+  }, [producturl]);
+
   return (
     <div className="flex w-full max-w-xl items-center">
       {/* Input de búsqueda */}
       <input
-        className="flex-1 rounded-l-md border border-gray-300 py-2 px-4 text-sm outline-none focus:border-blue-1 focus:ring focus:ring-blue-200"
+        className="flex-1 rounded-l-md border border-gray-300 px-4 py-2 text-sm outline-none focus:border-blue-1 focus:ring focus:ring-blue-200"
         type="search"
         placeholder="Search for products..."
         onChange={(e) => setProduct(e.target.value)}

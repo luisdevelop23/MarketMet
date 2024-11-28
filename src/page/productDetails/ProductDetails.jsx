@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductByAsin } from "../../services/Product/FecthProducts";
+import ContainerCarousel from "../../modules/card/components/ContainerCarousel";
 import ContainerDetail from "../../modules/products/ContainerDetail";
 import ProductDetailsLoader from "../../modules/ui-state/components/ProductDetailsLoader ";
-import ContainerCarousel from "../../modules/card/components/ContainerCarousel";
+import { FetchProductsById } from "../../services/Product/FetchProductsById";
 
 const ProductDetails = () => {
   const { product } = useParams();
@@ -17,7 +17,7 @@ const ProductDetails = () => {
       setError(false); 
 
       try {
-        const { data, error: fetchError } = await getProductByAsin(product);
+        const { data, error: fetchError } = await FetchProductsById(product);
         if (fetchError || !data || data.length === 0) {
           setError(true); 
         } else {

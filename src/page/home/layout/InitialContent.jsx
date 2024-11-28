@@ -1,31 +1,43 @@
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { ProductContext } from "../../../context/ProductsContext";
+import { useEffect, useState } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import CardProduct from "../../../modules/card/components/CardProduct";
 import ContainerCards from "../../../modules/card/components/ContainerCards";
 import Pagination from "../../../modules/core/components/Pagination";
 import LoadingCards from "../../../modules/ui-state/components/LoadingCards";
 import NotProductsCards from "../../../modules/ui-state/components/NotProductsCards";
-import FilterProducts from "../components/FilterProducts";
+import { getProducts } from "../../../services/Product/paginationService";
 
 const InitialContent = () => {
-  const { product } = useParams();
-  // console.log('tu url', product)
+  const { product } = useParams(); // Captura el parámetro :product.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const { products, loadingProducts, paginationFilterProducts } =
-    useContext(ProductContext);
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+
+  const fetchProducts = async () => {
+    const { data, error, count } = await getProducts(product, currentPage);
+    if (!error) {
+      setProducts(data);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    if (product === undefined) {
-      paginationFilterProducts("");
-    }
+    setLoading(true);
+    fetchProducts();
+  }, [product, currentPage]);
 
-    paginationFilterProducts(product);
-  }, [product]);
   return (
     <header>
-      <div className="mx-auto flex  flex-col mt-3 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
-        {loadingProducts ? (
+      <div className="mx-auto mt-3 flex flex-col gap-y-2 sm:w-11/12 md:w-11/12 lg:w-11/12 xl:w-11/12 2xl:w-9/12">
+        <div className="flex w-full flex-row justify-end">
+          <div className="w-full md:w-5/12">
+            {products.length === 0 ? <></> : <Pagination />}
+          </div>
+        </div>
+
+        {loading ? (
           <ContainerCards>
             <LoadingCards />
           </ContainerCards>
@@ -39,7 +51,7 @@ const InitialContent = () => {
           <NotProductsCards />
         )}
       </div>
-        {products.length === 0 ? <></> : <Pagination />}
+      {products.length === 0 ? <></> : <Pagination />}
     </header>
   );
 };

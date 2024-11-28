@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { paginationFilterProducts } from "../../../services/Product/FecthProducts";
+import { getProducts } from "../../../services/Product/paginationService";
 import LoadingCards from "../../ui-state/components/LoadingCards";
 import CardPCarousel from "./CardPCarousel";
 import { FetchRamdonProducts } from "../../../services/Product/FetchRamdonProducts";
@@ -32,11 +32,7 @@ const ContainerCarousel = ({
 
   useEffect(() => {
     const fetchProductsFilter = async () => {
-      const { data, error } = await paginationFilterProducts(
-        productSearched,
-        0,
-        cant,
-      );
+      const { data, error } = await getProducts(productSearched, 1, cant);
       if (error) {
         console.error("Error al obtener productos:", error);
       } else {

@@ -1,4 +1,4 @@
-const LoadingCards = ({ amount = 7 }) => {
+const LoadingCards = ({ amount = 15 }) => {
   const loadingArray = Array.from({ length: amount });
 
   return (
